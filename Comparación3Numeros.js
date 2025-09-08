@@ -1,22 +1,24 @@
-// Generar número secreto entre 1 y 10
-let numeroSecreto = Math.floor(Math.random() * (10 - 1 + 1)) + 1;
-console.log("Número secreto:", numeroSecreto); // Solo para pruebas
+// Pedir al usuario que ingrese 3 números
+let num1 = parseFloat(prompt("Ingresa el primer número:"));
+let num2 = parseFloat(prompt("Ingresa el segundo número:"));
+let num3 = parseFloat(prompt("Ingresa el tercer número:"));
 
-// Pedir número al usuario
-let numeroUsuario = parseInt(prompt("Adivina el número secreto del 1 al 10"));
-let vidas = 3;
-
-// Mientras el usuario no adivine y tenga vidas
-while (numeroUsuario !== numeroSecreto && vidas > 1) {
-    vidas--;
-    numeroUsuario = parseInt(prompt("Intenta nuevamente. Te quedan " + vidas + " vidas"));
-}
-
-// Verificar si ganó o perdió
-if (numeroUsuario === numeroSecreto) {
-    console.log("¡Ganaste!");
-    alert("¡Ganaste!");
+// Comparar los números
+if (num1 === num2 && num2 === num3) {
+    alert("Los tres números son iguales.");
+} else if (
+    (num1 === num2 && num1 !== num3) ||
+    (num1 === num3 && num1 !== num2) ||
+    (num2 === num3 && num2 !== num1)
+) {
+    alert("Hay dos números iguales y uno diferente.");
 } else {
-    console.log("Perdiste");
-    alert("Perdiste");
+    // Si los 3 numeros son diferentes
+    if (num1 > num2 && num2 > num3) {
+        alert("Los números proporcionados son de mayor a menor.");
+    } else if (num1 < num2 && num2 < num3) {
+        alert("Los números proporcionados son de menor a mayor.");
+    } else {
+        alert("Los tres números son diferentes.");
+    }
 }
